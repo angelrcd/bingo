@@ -69,4 +69,7 @@
 .box {
   border: 3px solid rgb(80 2 2);
   background: white;
+  font-size: 2em;
+  text-align: center;
+  line-height: 63px;
 }
