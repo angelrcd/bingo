@@ -1,7 +1,3 @@
-import _, { forEach } from "lodash-es";
-import "lodash-es/upperCase.js";
-import "lodash-es/shuffle.js";
-import "lodash-es/range.js";
 import * as modules from "./modules.js";
 
 // selectores DOM
@@ -55,6 +51,9 @@ newNumberButton.addEventListener("click", () => {
   boxDiv.className = "minibox";
   boxDiv.textContent = a;
   bottomContainerSelector.insertAdjacentElement("beforeend", boxDiv);
+  if (contarTachados(playerBoxes) === 15 && contarTachados(cpuBoxes) === 15) {
+    gameOver("TIE");
+  }
   if (contarTachados(playerBoxes) === 15) {
     gameOver("PLAYER WINS");
   }
