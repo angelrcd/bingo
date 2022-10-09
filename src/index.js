@@ -4,6 +4,7 @@ import * as modules from "./modules.js";
 const newNumberButton = document.querySelector(".new-number-button");
 const playerBoxes = document.querySelectorAll(".player .box");
 const cpuBoxes = document.querySelectorAll(".cpu .box");
+const allBoxes = document.querySelectorAll(".box");
 const bottomContainerSelector = document.querySelector(".container-bottom");
 
 //
@@ -40,6 +41,25 @@ function gameOver(resultado) {
   newNumberButton.textContent = resultado;
   newNumberButton.disabled = true;
 }
+function removeCheckOnAllBoxes() {
+  allBoxes.forEach(box => {
+    box.classList.remove("check");
+  });
+  const miniboxes = document.querySelectorAll(".minibox");
+  miniboxes.forEach(box => {
+    box.classList.remove("check");
+  });
+}
+
+function checkIfNumberCameOut(box) {
+  box.classList.add("check");
+  const miniboxes = document.querySelectorAll(".minibox");
+  miniboxes.forEach(minibox => {
+    if (minibox.textContent === box.textContent) {
+      minibox.classList.add("check");
+    }
+  });
+}
 
 newNumberButton.addEventListener("click", () => {
   const a = all90Numbers.pop();
@@ -51,16 +71,23 @@ newNumberButton.addEventListener("click", () => {
   boxDiv.className = "minibox";
   boxDiv.textContent = a;
   bottomContainerSelector.insertAdjacentElement("beforeend", boxDiv);
-  if (contarTachados(playerBoxes) === 15 && contarTachados(cpuBoxes) === 15) {
-    gameOver("TIE");
-  }
   if (contarTachados(playerBoxes) === 15) {
     gameOver("PLAYER WINS");
   }
   if (contarTachados(cpuBoxes) === 15) {
     gameOver("CPU WINS");
   }
+  if (contarTachados(playerBoxes) === 15 && contarTachados(cpuBoxes) === 15) {
+    gameOver("TIE");
+  }
   console.log(all90Numbers);
+});
+
+allBoxes.forEach(box => {
+  box.addEventListener("click", () => {
+    removeCheckOnAllBoxes();
+    checkIfNumberCameOut(box);
+  });
 });
 
 fillCard(playerBoxes, playerCard);
