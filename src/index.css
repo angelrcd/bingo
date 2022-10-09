@@ -52,11 +52,12 @@
 
 .container-bottom {
   height: 100%;
-  border: 3px solid white;
   box-sizing: border-box;
-  margin: 50px;
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  margin: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .grid {
@@ -71,5 +72,21 @@
   background: white;
   font-size: 2em;
   text-align: center;
-  line-height: 63px;
+  line-height: 74px;
+}
+
+.minibox {
+  border: 3px solid rgb(80 2 2);
+  background: white;
+  font-size: 2em;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 4%;
+}
+
+.tachado {
+  text-decoration: line-through;
+  background: rgb(125 15 15 / 38.9%);
+  color: white;
 }
