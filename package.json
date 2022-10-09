@@ -30,6 +30,7 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "canvas-confetti": "^1.5.1",
     "lodash-es": "^4.17.21"
   }
 }

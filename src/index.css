@@ -47,7 +47,16 @@
 }
 
 .new-number-button {
-  font-size: 2em;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 3px solid black;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(white, grey);
+  font-size: 5em;
+  cursor: pointer;
 }
 
 .container-bottom {
