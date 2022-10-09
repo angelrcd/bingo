@@ -52,9 +52,13 @@ function removeCheckOnAllBoxes() {
 }
 
 function checkIfNumberCameOut(box) {
-  box.classList.add("check");
   const miniboxes = document.querySelectorAll(".minibox");
   miniboxes.forEach(minibox => {
+    if (minibox.textContent === box.textContent) {
+      minibox.classList.add("check");
+    }
+  });
+  allBoxes.forEach(minibox => {
     if (minibox.textContent === box.textContent) {
       minibox.classList.add("check");
     }
