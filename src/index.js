@@ -6,9 +6,10 @@ const playerBoxes = document.querySelectorAll(".player .box");
 const cpuBoxes = document.querySelectorAll(".cpu .box");
 const allBoxes = document.querySelectorAll(".box");
 const bottomContainerSelector = document.querySelector(".container-bottom");
+const resetButtonSelector = document.querySelector(".reset-button");
 
 //
-const all90Numbers = modules.createRandom90Array();
+let all90Numbers = modules.createRandom90Array();
 let playerCard = modules.createRandom15Array();
 playerCard = playerCard.sort((a, b) => a - b);
 let cpuCard = modules.createRandom15Array();
@@ -37,10 +38,18 @@ function contarTachados(card) {
   return count;
 }
 
-function gameOver(resultado) {
-  newNumberButton.textContent = resultado;
-  newNumberButton.disabled = true;
+function quitarTachados() {
+  allBoxes.forEach(box => {
+    box.classList.remove("tachado");
+  });
 }
+
+function gameOver(victoryText) {
+  newNumberButton.textContent = victoryText;
+  newNumberButton.disabled = true;
+  resetButtonSelector.classList.remove("hidden");
+}
+
 function removeCheckOnAllBoxes() {
   allBoxes.forEach(box => {
     box.classList.remove("check");
@@ -85,6 +94,22 @@ newNumberButton.addEventListener("click", () => {
     gameOver("TIE");
   }
   console.log(all90Numbers);
+});
+
+resetButtonSelector.addEventListener("click", () => {
+  all90Numbers = modules.createRandom90Array();
+  playerCard = modules.createRandom15Array();
+  playerCard = playerCard.sort((a, b) => a - b);
+  cpuCard = modules.createRandom15Array();
+  cpuCard = cpuCard.sort((a, b) => a - b);
+  fillCard(playerBoxes, playerCard);
+  fillCard(cpuBoxes, cpuCard);
+  quitarTachados();
+  removeCheckOnAllBoxes();
+  newNumberButton.disabled = false;
+  newNumberButton.textContent = "Click";
+  bottomContainerSelector.innerHTML = "";
+  resetButtonSelector.classList.add("hidden");
 });
 
 allBoxes.forEach(box => {

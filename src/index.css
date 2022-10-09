@@ -48,6 +48,21 @@
   cursor: pointer;
 }
 
+.reset-button {
+  height: 100px;
+  width: 200px;
+  align-self: center;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 3px solid black;
+  background: radial-gradient(white, grey);
+  font-size: 2em;
+}
+
+.hidden {
+  display: none;
+}
+
 .container-bottom {
   height: 100%;
   box-sizing: border-box;
