@@ -14,5 +14,3 @@ export function createRandom15Array() {
   result = result.slice(0, 15);
   return result;
 }
-
-console.log(createRandom15Array());

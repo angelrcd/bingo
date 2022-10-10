@@ -1,4 +1,5 @@
 import * as modules from "./modules.js";
+import confetti from "canvas-confetti";
 
 // selectores DOM
 const newNumberButton = document.querySelector(".new-number-button");
@@ -86,6 +87,12 @@ newNumberButton.addEventListener("click", () => {
   bottomContainerSelector.insertAdjacentElement("beforeend", boxDiv);
   if (contarTachados(playerBoxes) === 15) {
     gameOver("PLAYER WINS");
+    confetti({
+      particleCount: 100,
+
+      spread: 160
+
+    });
   }
   if (contarTachados(cpuBoxes) === 15) {
     gameOver("CPU WINS");
